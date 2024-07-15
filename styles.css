@@ -1,4 +1,4 @@
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@400;700&display=swap"); /* @import fonts first */
 
 /* color themes */
 :root.pyro-light {
@@ -12,17 +12,17 @@
     --color-bg1: #ECEFF4;
     --color-bg2: #E5E9F0;
     --color-bg3: #D8DEE9;
-    /* theme colors */
-    --color-th0: #9d0208;
-    --color-th1: #d00000;
-    --color-th2: #f48c06;
-    --color-th3: #ffba08;
-    /* ui colors */
-    --color-ui0: #BF616A; /* error state */
-    --color-ui1: #D08770; /* danger, advanced functionality */
-    --color-ui2: #EBCB8B; /* warning state */
-    --color-ui3: #A3BE8C; /* success state */
-    --color-ui4: #B48EAD; /* rarely used, uncommon functionality */
+    /* ui colors (larger number = more commonly used) */
+    --color-ui0: #9d0208;
+    --color-ui1: #ffba08;
+    --color-ui2: #f48c06;
+    --color-ui3: #d00000;
+    /* state colors */
+    --color-st0: #BF616A; /* error state */
+    --color-st1: #D08770; /* danger, advanced functionality */
+    --color-st2: #EBCB8B; /* warning state */
+    --color-st3: #A3BE8C; /* success state */
+    --color-st4: #B48EAD; /* rarely used, uncommon functionality */
 }
 
 :root.pyro-dark {
@@ -36,17 +36,17 @@
     --color-bg1: #3B4252;
     --color-bg2: #434C5E;
     --color-bg3: #4C566A;
-    /* theme colors */
-    --color-th0: #9d0208;
-    --color-th1: #d00000;
-    --color-th2: #f48c06;
-    --color-th3: #ffba08;
-    /* ui colors */
-    --color-ui0: #BF616A; /* error state */
-    --color-ui1: #D08770; /* danger, advanced functionality */
-    --color-ui2: #EBCB8B; /* warning state */
-    --color-ui3: #A3BE8C; /* success state */
-    --color-ui4: #B48EAD; /* rarely used, uncommon functionality */
+    /* ui colors (larger number = more commonly used) */
+    --color-ui0: #9d0208;
+    --color-ui1: #ffba08;
+    --color-ui2: #f48c06;
+    --color-ui3: #d00000;
+    /* state colors */
+    --color-st0: #BF616A; /* error state */
+    --color-st1: #D08770; /* danger, advanced functionality */
+    --color-st2: #EBCB8B; /* warning state */
+    --color-st3: #A3BE8C; /* success state */
+    --color-st4: #B48EAD; /* rarely used, uncommon functionality */
 }
 
 body {
@@ -57,8 +57,6 @@ body {
 /*
     Typography
 */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@400;700&display=swap"); /* Inter font */
-
 h1, h2, h3, h4, h5, h6 {
     font-family: "Poppins", sans-serif;
     color: var(--color-fg3);
@@ -88,8 +86,23 @@ h6 {
     font-size: 16px;
 }
 
-p, a, input, button, select, textarea, optgroup, option {
+p, a {
     font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    color: var(--color-fg3);
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+input, button, select, textarea, optgroup, option {
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
     color: var(--color-fg2);
 }
 
@@ -97,31 +110,71 @@ p, a, input, button, select, textarea, optgroup, option {
     Components
 */
 /* Horizontal navbar (vertical orientation may come soon) */
-nav.pyro-nav {
+pyro-nav {
     display: flex;
     width: 100%; /* navbar expands to fit container size */
 }
 
 /* Must be a pyro-nav child element, used for alignment purposes only */
 /* data-align: [left | center | right], used for aligning pyro-nav elements. Defaults to none. */
-.pyro-navitem {
+pyro-navitem {
     display: block;
 }
 
-.pyro-navitem[data-align="left"] {
+pyro-navitem[data-align="left"] {
     margin-right: auto;
 }
 
-.pyro-navitem[data-align="center"] {
+pyro-navitem[data-align="center"] {
     margin-left: auto;
     margin-right: auto;
 }
 
-.pyro-navitem[data-align="right"] {
+pyro-navitem[data-align="right"] {
     margin-left: auto;
 }
 
 /* Acts the same as a standard button. */
-.pyro-button {
-    font-family: "Inter", sans-serif;
+/* data-variant: [secondary | disabled | danger | icon | with-icon], for different button variants. Defaults to none. */
+pyro-button {
+    font-family: "Poppins", sans-serif;
+    color: var(--color-bg0);
+    background-color: var(--color-fg0);
+    padding: 8px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+pyro-button:hover {
+    background-color: var(--color-fg1);
+}
+
+pyro-button[data-animate="scale"]:not([data-variant="disabled"]):active {
+    padding: 6px 8px;
+    margin: 2px;
+}
+
+pyro-button[data-variant="secondary"] {
+    color: var(--color-fg3);
+    background-color: var(--color-bg3);
+}
+
+pyro-button[data-variant="secondary"]:hover {
+    background-color: var(--color-bg2);
+}
+
+pyro-button[data-variant="disabled"] {
+    color: var(--color-fg2);
+    background-color: var(--color-bg1);
+    cursor: not-allowed;
+}
+
+pyro-button[data-variant="disabled"]:active {
+    padding: 8px 10px;
+    margin: 0px;
+}
+
+pyro-button[data-variant="danger"] {
+    color: #FFFFFF;
+    background-color: var(--color-st0);
 }
