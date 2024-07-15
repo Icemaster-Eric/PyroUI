@@ -1,9 +1,67 @@
-/* Inter font */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@400;700&display=swap");
 
-/* Typography */
+
+/* color themes */
+:root.pyro-light {
+    /* foreground is bright to dark (larger number = more important) */
+    --color-fg0: #4C566A;
+    --color-fg1: #434C5E;
+    --color-fg2: #3B4252;
+    --color-fg3: #2E3440;
+    /* background is bright to dark (larger number = more important) */
+    --color-bg0: #FFFFFF;
+    --color-bg1: #ECEFF4;
+    --color-bg2: #E5E9F0;
+    --color-bg3: #D8DEE9;
+    /* theme colors */
+    --color-th0: #9d0208;
+    --color-th1: #d00000;
+    --color-th2: #f48c06;
+    --color-th3: #ffba08;
+    /* ui colors */
+    --color-ui0: #BF616A; /* error state */
+    --color-ui1: #D08770; /* danger, advanced functionality */
+    --color-ui2: #EBCB8B; /* warning state */
+    --color-ui3: #A3BE8C; /* success state */
+    --color-ui4: #B48EAD; /* rarely used, uncommon functionality */
+}
+
+:root.pyro-dark {
+    /* foreground is dark to bright (larger number = more important) */
+    --color-fg0: #D8DEE9;
+    --color-fg1: #E5E9F0;
+    --color-fg2: #ECEFF4;
+    --color-fg3: #FFFFFF;
+    /* background is dark to bright (larger number = more important) */
+    --color-bg0: #2E3440;
+    --color-bg1: #3B4252;
+    --color-bg2: #434C5E;
+    --color-bg3: #4C566A;
+    /* theme colors */
+    --color-th0: #9d0208;
+    --color-th1: #d00000;
+    --color-th2: #f48c06;
+    --color-th3: #ffba08;
+    /* ui colors */
+    --color-ui0: #BF616A; /* error state */
+    --color-ui1: #D08770; /* danger, advanced functionality */
+    --color-ui2: #EBCB8B; /* warning state */
+    --color-ui3: #A3BE8C; /* success state */
+    --color-ui4: #B48EAD; /* rarely used, uncommon functionality */
+}
+
+body {
+    background-color: var(--color-bg0);
+    color: var(--color-fg3);
+}
+
+/*
+    Typography
+*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@400;700&display=swap"); /* Inter font */
+
 h1, h2, h3, h4, h5, h6 {
     font-family: "Poppins", sans-serif;
+    color: var(--color-fg3);
 }
 
 h1 {
@@ -32,20 +90,20 @@ h6 {
 
 p, a, input, button, select, textarea, optgroup, option {
     font-family: "Roboto", sans-serif;
+    color: var(--color-fg2);
 }
 
 /*
-    Horizontal navbar (vertical orientation may come soon)
+    Components
 */
+/* Horizontal navbar (vertical orientation may come soon) */
 nav.pyro-nav {
     display: flex;
     width: 100%; /* navbar expands to fit container size */
 }
 
-/*
-    Must be a pyro-nav child element, used for alignment purposes only
-    data-align: [left | center | right], used for aligning pyro-nav elements. Defaults to none.
-*/
+/* Must be a pyro-nav child element, used for alignment purposes only */
+/* data-align: [left | center | right], used for aligning pyro-nav elements. Defaults to none. */
 .pyro-navitem {
     display: block;
 }
@@ -63,25 +121,7 @@ nav.pyro-nav {
     margin-left: auto;
 }
 
-/*
-    Acts the same as a standard button.
-*/
+/* Acts the same as a standard button. */
 .pyro-button {
     font-family: "Inter", sans-serif;
 }
-
-/*
-    
-*/
-
-/*
-    
-*/
-
-/*
-    
-*/
-
-/*
-    
-*/
