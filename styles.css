@@ -1,0 +1,87 @@
+/* Inter font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@400;700&display=swap");
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Poppins", sans-serif;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+h2 {
+    font-size: 28px;
+}
+
+h3 {
+    font-size: 24px;
+}
+
+h4 {
+    font-size: 20px;
+}
+
+h5 {
+    font-size: 18px;
+}
+
+h6 {
+    font-size: 16px;
+}
+
+p, a, input, button, select, textarea, optgroup, option {
+    font-family: "Roboto", sans-serif;
+}
+
+/*
+    Horizontal navbar (vertical orientation may come soon)
+*/
+nav.pyro-nav {
+    display: flex;
+    width: 100%; /* navbar expands to fit container size */
+}
+
+/*
+    Must be a pyro-nav child element, used for alignment purposes only
+    data-align: [left | center | right], used for aligning pyro-nav elements. Defaults to none.
+*/
+.pyro-navitem {
+    display: block;
+}
+
+.pyro-navitem[data-align="left"] {
+    margin-right: auto;
+}
+
+.pyro-navitem[data-align="center"] {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pyro-navitem[data-align="right"] {
+    margin-left: auto;
+}
+
+/*
+    Acts the same as a standard button.
+*/
+.pyro-button {
+    font-family: "Inter", sans-serif;
+}
+
+/*
+    
+*/
+
+/*
+    
+*/
+
+/*
+    
+*/
+
+/*
+    
+*/
