@@ -88,7 +88,7 @@ h6 {
 
 p, a {
     font-family: "Roboto", sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     color: var(--color-fg3);
 }
 
@@ -101,9 +101,16 @@ a:hover {
 }
 
 input, button, select, textarea, optgroup, option {
-    font-family: "Poppins", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 16px;
     color: var(--color-fg2);
+}
+
+code {
+    font-family: monospace;
+    background-color: var(--color-bg1);
+    border-radius: 3px;
+    padding: 0 3px;
 }
 
 /*
@@ -184,18 +191,31 @@ pyro-button[data-variant="danger"] {
 }
 
 /* Text / Email (?) Input */
-pyro-input[type="text"] {
-    
+pyro-input[type="text"]::part(input) {
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    color: var(--color-fg2);
+    background-color: transparent;
+    border: 2px solid var(--color-bg3);
+    border-radius: 5px;
+    padding: 8px 10px;
+}
+
+pyro-input[type="text"]::part(input):focus {
+    outline: var(--color-fg3) outset 2px;
 }
 
 /* Checkbox Input */
+pyro-input[type="checkbox"]::part(input) {
+
+}
+
+pyro-input[type="checkbox"]::part(input):focus {
+    
+}
 
 /* Radio Input */
 
 /* Search Input */
 
 /* File Input */
-
-/*  Input */
-
-/*  Input */

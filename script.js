@@ -24,8 +24,16 @@ customElements.define("pyro-input", class extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({mode: "open"});
+
         const input = document.createElement("input");
+        input.setAttribute("part", "input");
         this.shadowRoot.appendChild(input);
+
+        /*if (this.textContent) {
+            const label = document.createElement("label");
+            label.setAttribute("part", "label");
+            this.shadowRoot.appendChild(label);
+        }*/
     }
 
     connectedCallback() {
