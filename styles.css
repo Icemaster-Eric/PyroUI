@@ -116,7 +116,7 @@ pyro-nav {
 }
 
 /* Must be a pyro-nav child element, used for alignment purposes only */
-/* data-align: [left | center | right], used for aligning pyro-nav elements. Defaults to none. */
+/* data-align: [none | left | center | right], used for aligning pyro-nav elements. Defaults to none. */
 pyro-navitem {
     display: block;
 }
@@ -134,9 +134,13 @@ pyro-navitem[data-align="right"] {
     margin-left: auto;
 }
 
-/* Acts the same as a standard button. */
-/* data-variant: [secondary | disabled | danger | icon | with-icon], for different button variants. Defaults to none. */
+/* Button */
+/* data-variant: [none | secondary | disabled | danger], for different button variants. Defaults to none (primary button). */
+/* data-animate: [none | scale], used to apply animations to buttons. Defaults to none. */
 pyro-button {
+    display: flex;
+    align-items: center;
+    width: max-content;
     font-family: "Poppins", sans-serif;
     color: var(--color-bg0);
     background-color: var(--color-fg0);
@@ -178,3 +182,20 @@ pyro-button[data-variant="danger"] {
     color: #FFFFFF;
     background-color: var(--color-st0);
 }
+
+/* Text / Email (?) Input */
+pyro-input[type="text"] {
+    
+}
+
+/* Checkbox Input */
+
+/* Radio Input */
+
+/* Search Input */
+
+/* File Input */
+
+/*  Input */
+
+/*  Input */
