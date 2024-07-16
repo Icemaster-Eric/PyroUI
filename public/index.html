@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" class="pyro-light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyroUI</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" async defer></script>
+</head>
+<body>
+    <nav>
+        <div class="pyro">
+            PyroUI
+        </div>
+        <div class="pyro" data-align="center">
+            Docs
+        </div>
+        <div class="pyro">
+            <a href="#">Search</a>
+        </div>
+    </nav>
+    <h1>Heading 1</h1>
+    <h2>Heading 2</h2>
+    <h3>Heading 3</h3>
+    <h4>Heading 4</h4>
+    <h5>Heading 5</h5>
+    <h6>Heading 6</h6>
+    <p>Some text here, <a href="#">blah blah blah</a>...<br>very epic code: <code>print("hello world")</code></p>
+    <button class="pyro">Primary Button</button>
+    <button class="pyro" data-variant="secondary">Secondary Button</button>
+    <button class="pyro" data-variant="disabled">Disabled Button</button>
+    <button class="pyro" data-variant="danger">Danger Button</button>
+    <button class="pyro">
+        <img src="assets/pyro.png" width="25px" height="25px">
+    </button>
+    <button class="pyro" data-variant="secondary">
+        <img src="assets/pyro.png" width="25px" height="25px">
+        Icon Button
+    </button>
+    <form action="/submit" method="post" id="example-form">
+        <input type="text" class="pyro" placeholder="Input Text" name="text-example">
+        <input type="checkbox" class="pyro" name="checkbox-example">
+        <input type="radio" class="pyro" name="radio-example">
+        <input type="checkbox" class="pyro" data-variant="toggle" name="checkbox-example">
+        <button type="submit" class="pyro">Submit</button>
+    </form>
+</body>
+</html>
