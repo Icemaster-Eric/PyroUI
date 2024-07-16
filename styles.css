@@ -100,7 +100,7 @@ a:hover {
     text-decoration: underline;
 }
 
-input, button, select, textarea, optgroup, option {
+input, button, select, textarea, optgroup, option, label {
     font-family: "Roboto", sans-serif;
     font-size: 16px;
     color: var(--color-fg2);
@@ -147,6 +147,7 @@ pyro-navitem[data-align="right"] {
 pyro-button {
     display: flex;
     align-items: center;
+    gap: 5px;
     width: max-content;
     font-family: "Poppins", sans-serif;
     color: var(--color-bg0);
@@ -191,7 +192,7 @@ pyro-button[data-variant="danger"] {
 }
 
 /* Text / Email (?) Input */
-pyro-input[type="text"]::part(input) {
+pyro-textinput::part(input) {
     font-family: "Roboto", sans-serif;
     font-size: 16px;
     color: var(--color-fg2);
@@ -201,17 +202,24 @@ pyro-input[type="text"]::part(input) {
     padding: 8px 10px;
 }
 
-pyro-input[type="text"]::part(input):focus {
+pyro-textinput::part(input):focus {
     outline: var(--color-fg3) outset 2px;
 }
 
 /* Checkbox Input */
-pyro-input[type="checkbox"]::part(input) {
-
+pyro-checkbox {
+    padding: 5px;
+    border-radius: 5px;
 }
 
-pyro-input[type="checkbox"]::part(input):focus {
-    
+pyro-checkbox::part(input) {
+    cursor: pointer;
+}
+
+pyro-checkbox::part(label) {
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    cursor: pointer;
 }
 
 /* Radio Input */
