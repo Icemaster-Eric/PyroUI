@@ -38,12 +38,10 @@ customElements.define("pyro-button", class extends HTMLElement {
             this.dispatchEvent(new Event("click"));
 
             if (this.hasAttribute("data-submit")) {
-                this.addEventListener("click", (event) => {
-                    const parentForm = this.closest("pyro-form");
-                    if (parentForm) {
-                        parentForm.requestSubmit();
-                    }
-                });
+                const parentForm = this.closest("pyro-form");
+                if (parentForm) {
+                    parentForm.requestSubmit();
+                }
             }
         });
 
@@ -64,97 +62,141 @@ customElements.define("pyro-button", class extends HTMLElement {
     }
 });
 
-// this is extremely cursed and probably broken in many ways, need to polish later
-customElements.define("pyro-form", class PyroForm extends HTMLElement {
-    constructor() {
-        super();
-        this.attachShadow({mode: "open"});
-    }
-
-    connectedCallback() {
-        this.render();
-        this.setupFormSubmission();
-    }
-
-    render() {
-        this.shadowRoot.innerHTML = `
-            <form id="pyro-form">
-            <slot></slot>
-            </form>
-        `;
-        // Add event listeners to slotted elements
-        this.shadowRoot.querySelector("slot").addEventListener("slotchange", () => {
-            this.addEventListenersToSlottedContent();
-        });
-    }
-
-    addEventListenersToSlottedContent() {
-        const slot = this.shadowRoot.querySelector("slot");
-        const slottedNodes = slot.assignedNodes({ flatten: true });
-
-        slottedNodes.forEach(node => {
-            if (node.nodeType === Node.ELEMENT_NODE && node.tagName === "BUTTON" && node.type === "submit") {
-                node.addEventListener("click", (event) => {
-                    event.preventDefault();
-                    this.requestSubmit();
-                });
-            }
-        });
-    }
-
-    setupFormSubmission() {
-        const form = this.shadowRoot.getElementById("pyro-form");
-        form.addEventListener("submit", async (event) => {
-            event.preventDefault();
-    
-            const formData = new FormData(form);
-            const action = this.getAttribute("action");
-            const method = this.getAttribute("method") || "GET";
-    
-            if (action) {
-                try {
-                    const response = await fetch(action, {
-                        method: method.toUpperCase(),
-                        body: method.toUpperCase() === "GET" ? null : formData,
-                    });
-                    const data = await response.json();
-                } catch (error) {
-                    console.error("Form submission error:", error);
-                }
-            }
-        });
-    }
-
-    requestSubmit() {
-        const form = this.shadowRoot.getElementById("pyro-form");
-        form.requestSubmit();
-    }
-
-    submit() {
-        const form = this.shadowRoot.getElementById("pyro-form");
-        form.submit();
-    }
-
-    reset() {
-        const form = this.shadowRoot.getElementById("pyro-form");
-        form.reset();
-    }
-
-    reportValidity() {
-        const form = this.shadowRoot.getElementById("pyro-form");
-        return form.reportValidity();
-    }
-});
-
-customElements.define("pyro-textinput", class extends HTMLElement {
+customElements.define("pyro-textbox", class extends HTMLElement {
     constructor() {
         super();
         this.type = "text";
+        this.name = this.getAttribute("name");
+
         this.attachShadow({mode: "open"});
-        const input = document.createElement("input");
-        input.type = "text";
-        input.setAttribute("part", "input");
-        this.shadowRoot.appendChild(input);
+        this.input = document.createElement("input");
+        this.input.type = "text";
+        this.input.setAttribute("part", "input");
+        this.shadowRoot.appendChild(this.input);
+    }
+
+    connectedCallback() {
+        const input = this.shadowRoot.querySelector("input");
+        // Copy attributes from pyro-input to the internal input
+        for (let attr of this.attributes) {
+            input.setAttribute(attr.name, attr.value);
+        }
+        // Reflect attributes
+        new MutationObserver(mutations => {
+            for (const mutation of mutations) {
+                if (mutation.type === "attributes") {
+                    input.setAttribute(mutation.attributeName, this.getAttribute(mutation.attributeName));
+                }
+            }
+        }).observe(this, {attributes: true});
+    }
+});
+
+// basically the same as pyro-textbox lol
+customElements.define("pyro-password", class extends HTMLElement {
+    constructor() {
+        super();
+        this.type = "password";
+        this.name = this.getAttribute("name");
+
+        this.attachShadow({mode: "open"});
+        this.input = document.createElement("input");
+        this.input.type = "password";
+        this.input.setAttribute("part", "input");
+        this.shadowRoot.appendChild(this.input);
+    }
+
+    connectedCallback() {
+        const input = this.shadowRoot.querySelector("input");
+        // Copy attributes from pyro-input to the internal input
+        for (let attr of this.attributes) {
+            input.setAttribute(attr.name, attr.value);
+        }
+        // Reflect attributes
+        new MutationObserver(mutations => {
+            for (const mutation of mutations) {
+                if (mutation.type === "attributes") {
+                    input.setAttribute(mutation.attributeName, this.getAttribute(mutation.attributeName));
+                }
+            }
+        }).observe(this, {attributes: true});
+    }
+});
+
+// basically the same as pyro-textbox lol
+customElements.define("pyro-search", class extends HTMLElement {
+    constructor() {
+        super();
+        this.type = "search";
+        this.name = this.getAttribute("name");
+
+        this.attachShadow({mode: "open"});
+        this.input = document.createElement("input");
+        this.input.type = "search";
+        this.input.setAttribute("part", "input");
+        this.shadowRoot.appendChild(this.input);
+    }
+
+    connectedCallback() {
+        const input = this.shadowRoot.querySelector("input");
+        // Copy attributes from pyro-input to the internal input
+        for (let attr of this.attributes) {
+            input.setAttribute(attr.name, attr.value);
+        }
+        // Reflect attributes
+        new MutationObserver(mutations => {
+            for (const mutation of mutations) {
+                if (mutation.type === "attributes") {
+                    input.setAttribute(mutation.attributeName, this.getAttribute(mutation.attributeName));
+                }
+            }
+        }).observe(this, {attributes: true});
+    }
+});
+
+// basically the same as pyro-textbox lol
+customElements.define("pyro-email", class extends HTMLElement {
+    constructor() {
+        super();
+        this.type = "email";
+        this.name = this.getAttribute("name");
+
+        this.attachShadow({mode: "open"});
+        this.input = document.createElement("input");
+        this.input.type = "email";
+        this.input.setAttribute("part", "input");
+        this.shadowRoot.appendChild(this.input);
+    }
+
+    connectedCallback() {
+        const input = this.shadowRoot.querySelector("input");
+        // Copy attributes from pyro-input to the internal input
+        for (let attr of this.attributes) {
+            input.setAttribute(attr.name, attr.value);
+        }
+        // Reflect attributes
+        new MutationObserver(mutations => {
+            for (const mutation of mutations) {
+                if (mutation.type === "attributes") {
+                    input.setAttribute(mutation.attributeName, this.getAttribute(mutation.attributeName));
+                }
+            }
+        }).observe(this, {attributes: true});
+    }
+});
+
+// basically the same as pyro-textbox lol
+customElements.define("pyro-url", class extends HTMLElement {
+    constructor() {
+        super();
+        this.type = "url";
+        this.name = this.getAttribute("name");
+
+        this.attachShadow({mode: "open"});
+        this.input = document.createElement("input");
+        this.input.type = "url";
+        this.input.setAttribute("part", "input");
+        this.shadowRoot.appendChild(this.input);
     }
 
     connectedCallback() {
@@ -178,8 +220,12 @@ customElements.define("pyro-checkbox", class extends HTMLElement {
     constructor() {
         super();
         this.type = "checkbox";
-        this.attachShadow({mode: "open"});
+        this.name = this.getAttribute("name");
+        if (this.name) {
+            this.value = this.getAttribute("value");
+        }
 
+        this.attachShadow({mode: "open"});
         this.input = document.createElement("input");
         this.input.type = "checkbox";
         this.input.setAttribute("part", "input");
@@ -220,6 +266,8 @@ customElements.define("pyro-radio", class extends HTMLElement {
     constructor() {
         super();
         this.type = "radio";
+        this.name = this.getAttribute("name");
+        this.value = this.getAttribute("value");
         this.attachShadow({mode: "open"});
 
         this.input = document.createElement("input");
@@ -281,5 +329,159 @@ customElements.define("pyro-radio", class extends HTMLElement {
 
     static get observedAttributes() {
         return ["name", "checked"];
+    }
+});
+
+// needs to be reworked so that this actually acts like a file input
+customElements.define("pyro-file", class extends HTMLElement {
+    constructor() {
+        super();
+        this.type = "file";
+        this.name = this.getAttribute("name");
+
+        this.attachShadow({mode: "open"});
+        this.input = document.createElement("input");
+        this.input.type = "file";
+        this.input.setAttribute("part", "input");
+        this.shadowRoot.appendChild(this.input);
+    }
+
+    connectedCallback() {
+        const input = this.shadowRoot.querySelector("input");
+        // Copy attributes from pyro-input to the internal input
+        for (let attr of this.attributes) {
+            input.setAttribute(attr.name, attr.value);
+        }
+        // Reflect attributes
+        new MutationObserver(mutations => {
+            for (const mutation of mutations) {
+                if (mutation.type === "attributes") {
+                    input.setAttribute(mutation.attributeName, this.getAttribute(mutation.attributeName));
+                }
+            }
+        }).observe(this, {attributes: true});
+    }
+});
+
+// needs to be reworked so that this actually acts like a range input
+customElements.define("pyro-range", class extends HTMLElement {
+    constructor() {
+        super();
+        this.type = "range";
+        this.name = this.getAttribute("name");
+
+        this.attachShadow({mode: "open"});
+        this.input = document.createElement("input");
+        this.input.type = "range";
+        this.input.setAttribute("part", "input");
+        this.shadowRoot.appendChild(this.input);
+    }
+
+    connectedCallback() {
+        const input = this.shadowRoot.querySelector("input");
+        // Copy attributes from pyro-input to the internal input
+        for (let attr of this.attributes) {
+            input.setAttribute(attr.name, attr.value);
+        }
+        // Reflect attributes
+        new MutationObserver(mutations => {
+            for (const mutation of mutations) {
+                if (mutation.type === "attributes") {
+                    input.setAttribute(mutation.attributeName, this.getAttribute(mutation.attributeName));
+                }
+            }
+        }).observe(this, {attributes: true});
+    }
+});
+
+// this is extremely cursed and probably broken in many ways, need to polish later
+customElements.define("pyro-form", class PyroForm extends HTMLElement {
+    constructor() {
+        super();
+        this.attachShadow({mode: "open"});
+    }
+
+    connectedCallback() {
+        this.render();
+        this.setupFormSubmission();
+    }
+
+    render() {
+        this.shadowRoot.innerHTML = `
+            <form id="pyro-form">
+            <slot></slot>
+            </form>
+        `;
+    }
+
+    setupFormSubmission() {
+        const form = this.shadowRoot.getElementById("pyro-form");
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+    
+            const formData = new FormData();
+
+            const slot = this.shadowRoot.querySelector("slot");
+            const slottedNodes = slot.assignedNodes({ flatten: true });
+
+            slottedNodes.forEach(node => {
+                if (node.nodeName.startsWith("PYRO-")) {
+                    if (["text", "password", "search", "email", "url"].includes(node.type)) {
+                        if (node.name && node.input.value) {
+                            formData.append(node.name, node.input.value);
+                        }
+                    } else if (node.type === "checkbox") {
+                        if (node.name && node.input.checked) {
+                            console.log(node.name);
+                            if (node.input.value) {
+                                formData.append(node.name, node.input.value);
+                            } else {
+                                formData.append(node.name, "on");
+                            }
+                        }
+                    } else if (node.type === "radio") {
+                        
+                    }
+                }
+            });
+
+            const action = this.getAttribute("action");
+            const method = this.getAttribute("method") || "GET";
+    
+            if (action) {
+                try {
+                    const response = await fetch(action, {
+                        method: method.toUpperCase(),
+                        body: method.toUpperCase() === "GET" ? null : formData,
+                    });
+                    const data = await response.json();
+                } catch (error) {
+                    console.error("Form submission error:", error);
+                }
+            }
+        });
+    }
+
+    // if the user needs to hook into these events
+    beforeSubmitting() {}
+    afterSubmitting() {}
+
+    requestSubmit() {
+        const form = this.shadowRoot.getElementById("pyro-form");
+        this.beforeSubmitting();
+        form.requestSubmit();
+        this.afterSubmitting();
+    }
+
+    submit() {
+        const form = this.shadowRoot.getElementById("pyro-form");
+        this.beforeSubmitting();
+        form.submit();
+        this.afterSubmitting();
+    }
+
+    reportValidity() {
+        const form = this.shadowRoot.getElementById("pyro-form");
+        return form.reportValidity();
     }
 });

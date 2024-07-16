@@ -38,12 +38,17 @@
         Icon Button
     </pyro-button>
     <pyro-form action="/submit" method="post" id="example-form">
-        <pyro-textinput placeholder="Input Text"></pyro-textinput>
-        <pyro-checkbox></pyro-checkbox>
-        <pyro-checkbox>Label</pyro-checkbox>
+        <pyro-textbox name="textinput" placeholder="Input Text"></pyro-textbox>
+        <pyro-password name="password" placeholder="Input Text"></pyro-password>
+        <pyro-search name="search" placeholder="Input Text"></pyro-search>
+        <pyro-email name="email" placeholder="Input Text"></pyro-email>
+        <pyro-url name="url" placeholder="Input Text"></pyro-url>
+        <pyro-checkbox name="checkbox one"></pyro-checkbox>
+        <pyro-checkbox name="checkbox two" value="label">Label</pyro-checkbox>
         <pyro-radio name="radio-example" value="nolabel"></pyro-radio>
         <pyro-radio name="radio-example" value="label">Radio</pyro-radio>
         <pyro-button data-submit>Submit</pyro-button>
     </pyro-form>
+    <form action="/submit" method="post"></form>
 </body>
 </html>
