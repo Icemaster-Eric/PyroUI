@@ -143,50 +143,47 @@ pyro-navitem[data-align="right"] {
 
 /* Button */
 /* data-variant: [none | secondary | disabled | danger], for different button variants. Defaults to none (primary button). */
-/* data-animate: [none | scale], used to apply animations to buttons. Defaults to none. */
-pyro-button {
+/* data-animate: [none], used to apply animations to buttons. Defaults to none. */
+pyro-button::part(button) {
     display: flex;
     align-items: center;
     gap: 5px;
     width: max-content;
     font-family: "Poppins", sans-serif;
     color: var(--color-bg0);
+    border: none;
     background-color: var(--color-fg0);
     padding: 8px 10px;
     border-radius: 6px;
     cursor: pointer;
 }
 
-pyro-button:hover {
+pyro-button::part(button):hover {
     background-color: var(--color-fg1);
 }
 
-pyro-button[data-animate="scale"]:not([data-variant="disabled"]):active {
-    padding: 6px 8px;
-    margin: 2px;
-}
-
-pyro-button[data-variant="secondary"] {
+pyro-button[data-variant="secondary"]::part(button) {
     color: var(--color-fg3);
     background-color: var(--color-bg3);
 }
 
-pyro-button[data-variant="secondary"]:hover {
+pyro-button[data-variant="secondary"]::part(button):hover {
     background-color: var(--color-bg2);
 }
 
-pyro-button[data-variant="disabled"] {
+pyro-button[data-variant="disabled"]::part(button) {
     color: var(--color-fg2);
     background-color: var(--color-bg1);
     cursor: not-allowed;
 }
 
-pyro-button[data-variant="disabled"]:active {
+pyro-button[data-variant="disabled"]::part(button):active {
     padding: 8px 10px;
     margin: 0px;
 }
 
-pyro-button[data-variant="danger"] {
+/* add hover animation to this */
+pyro-button[data-variant="danger"]::part(button) {
     color: #FFFFFF;
     background-color: var(--color-st0);
 }
