@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" class="pyro-light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyroUI</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" async defer></script>
+</head>
+<body>
+    <pyro-nav>
+        <pyro-navitem>
+            PyroUI
+        </pyro-navitem>
+        <pyro-navitem data-align="center">
+            Docs
+        </pyro-navitem>
+        <pyro-navitem>
+            <a href="#">Search</a>
+        </pyro-navitem>
+    </pyro-nav>
+    <h1>Heading 1</h1>
+    <h2>Heading 2</h2>
+    <h3>Heading 3</h3>
+    <h4>Heading 4</h4>
+    <h5>Heading 5</h5>
+    <h6>Heading 6</h6>
+    <p>Some text here, <a href="#">blah blah blah</a>...<br>very epic code: <code>print("hello world")</code></p>
+    <pyro-button>Primary Button</pyro-button>
+    <pyro-button data-variant="secondary">Secondary Button</pyro-button>
+    <pyro-button data-variant="disabled">Disabled Button</pyro-button>
+    <pyro-button data-variant="danger">Danger Button</pyro-button>
+    <pyro-button>
+        <img src="assets/pyro.png" width="25px" height="25px">
+    </pyro-button>
+    <pyro-button data-variant="secondary">
+        <img src="assets/pyro.png" width="25px" height="25px">
+        Icon Button
+    </pyro-button>
+    <pyro-form action="/submit" method="post" id="example-form">
+        <pyro-textinput placeholder="Input Text"></pyro-textinput>
+        <pyro-checkbox></pyro-checkbox>
+        <pyro-checkbox>Label</pyro-checkbox>
+        <pyro-radio name="radio-example" value="nolabel"></pyro-radio>
+        <pyro-radio name="radio-example" value="label">Radio</pyro-radio>
+        <pyro-button data-submit>Submit</pyro-button>
+    </pyro-form>
+</body>
+</html>

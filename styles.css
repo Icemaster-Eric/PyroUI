@@ -117,34 +117,34 @@ code {
     Components
 */
 /* Horizontal navbar (vertical orientation may come soon) */
-nav.pyro {
+pyro-nav {
     display: flex;
     width: 100%; /* navbar expands to fit container size */
 }
 
-/* Must be a pyro nav child element, used for alignment purposes only */
+/* Must be a pyro-nav child element, used for alignment purposes only */
 /* data-align: [none | left | center | right], used for aligning pyro-nav elements. Defaults to none. */
-nav.pyro > div.pyro {
+pyro-navitem {
     display: block;
 }
 
-nav.pyro > div.pyro[data-align="left"] {
+pyro-navitem[data-align="left"] {
     margin-right: auto;
 }
 
-nav.pyro > div.pyro[data-align="center"] {
+pyro-navitem[data-align="center"] {
     margin-left: auto;
     margin-right: auto;
 }
 
-nav.pyro > div.pyro[data-align="right"] {
+pyro-navitem[data-align="right"] {
     margin-left: auto;
 }
 
 /* Button */
 /* data-variant: [none | secondary | disabled | danger], for different button variants. Defaults to none (primary button). */
 /* data-animate: [none], used to apply animations to buttons. Defaults to none. */
-button.pyro {
+pyro-button::part(button) {
     display: flex;
     align-items: center;
     gap: 5px;
@@ -158,38 +158,38 @@ button.pyro {
     cursor: pointer;
 }
 
-button.pyro:hover {
+pyro-button::part(button):hover {
     background-color: var(--color-fg1);
 }
 
-button.pyro[data-variant="secondary"] {
+pyro-button[data-variant="secondary"]::part(button) {
     color: var(--color-fg3);
     background-color: var(--color-bg3);
 }
 
-button.pyro[data-variant="secondary"]:hover {
+pyro-button[data-variant="secondary"]::part(button):hover {
     background-color: var(--color-bg2);
 }
 
-button.pyro[data-variant="disabled"] {
+pyro-button[data-variant="disabled"]::part(button) {
     color: var(--color-fg2);
     background-color: var(--color-bg1);
     cursor: not-allowed;
 }
 
-button.pyro[data-variant="disabled"]:active {
+pyro-button[data-variant="disabled"]::part(button):active {
     padding: 8px 10px;
     margin: 0px;
 }
 
 /* add hover animation to this */
-button.pyro[data-variant="danger"] {
+pyro-button[data-variant="danger"]::part(button) {
     color: #FFFFFF;
     background-color: var(--color-st0);
 }
 
 /* Text / Email (?) Input */
-input[type="text"].pyro {
+pyro-textinput::part(input) {
     font-family: "Roboto", sans-serif;
     font-size: 16px;
     color: var(--color-fg2);
@@ -199,21 +199,28 @@ input[type="text"].pyro {
     padding: 8px 10px;
 }
 
-input[type="text"].pyro:focus {
+pyro-textinput::part(input):focus {
     outline: var(--color-fg3) outset 2px;
 }
 
 /* Checkbox Input */
+pyro-checkbox {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+pyro-checkbox::part(input) {
+    cursor: pointer;
+}
+
+pyro-checkbox::part(label) {
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+}
 
 /* Radio Input */
 
 /* Search Input */
 
 /* File Input */
-
-/* Fieldset */
-
-/* Toggle (checkbox variant) */
-input[type="checkbox"][data-variant="toggle"].pyro {
-
-}
