@@ -50,6 +50,7 @@
 }
 
 body {
+    font-family: "Roboto", sans-serif;
     background-color: var(--color-bg0);
     color: var(--color-fg3);
 }
@@ -101,7 +102,7 @@ a:hover {
 }
 
 input, button, select, textarea, optgroup, option, label {
-    font-family: "Roboto", sans-serif;
+    font-family: inherit;
     font-size: 16px;
     color: var(--color-fg2);
 }
@@ -112,115 +113,3 @@ code {
     border-radius: 3px;
     padding: 0 3px;
 }
-
-/*
-    Components
-*/
-/* Horizontal navbar (vertical orientation may come soon) */
-pyro-nav {
-    display: flex;
-    width: 100%; /* navbar expands to fit container size */
-}
-
-/* Must be a pyro-nav child element, used for alignment purposes only */
-/* data-align: [none | left | center | right], used for aligning pyro-nav elements. Defaults to none. */
-pyro-navitem {
-    display: block;
-}
-
-pyro-navitem[data-align="left"] {
-    margin-right: auto;
-}
-
-pyro-navitem[data-align="center"] {
-    margin-left: auto;
-    margin-right: auto;
-}
-
-pyro-navitem[data-align="right"] {
-    margin-left: auto;
-}
-
-/* Button */
-/* data-variant: [none | secondary | disabled | danger], for different button variants. Defaults to none (primary button). */
-/* data-animate: [none], used to apply animations to buttons. Defaults to none. */
-pyro-button::part(button) {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    width: max-content;
-    font-family: "Poppins", sans-serif;
-    color: var(--color-bg0);
-    border: none;
-    background-color: var(--color-fg0);
-    padding: 8px 10px;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-pyro-button::part(button):hover {
-    background-color: var(--color-fg1);
-}
-
-pyro-button[data-variant="secondary"]::part(button) {
-    color: var(--color-fg3);
-    background-color: var(--color-bg3);
-}
-
-pyro-button[data-variant="secondary"]::part(button):hover {
-    background-color: var(--color-bg2);
-}
-
-pyro-button[data-variant="disabled"]::part(button) {
-    color: var(--color-fg2);
-    background-color: var(--color-bg1);
-    cursor: not-allowed;
-}
-
-pyro-button[data-variant="disabled"]::part(button):active {
-    padding: 8px 10px;
-    margin: 0px;
-}
-
-/* add hover animation to this */
-pyro-button[data-variant="danger"]::part(button) {
-    color: #FFFFFF;
-    background-color: var(--color-st0);
-}
-
-/* Text / Email (?) Input */
-pyro-textinput::part(input) {
-    font-family: "Roboto", sans-serif;
-    font-size: 16px;
-    color: var(--color-fg2);
-    background-color: transparent;
-    border: 2px solid var(--color-bg3);
-    border-radius: 5px;
-    padding: 8px 10px;
-}
-
-pyro-textinput::part(input):focus {
-    outline: var(--color-fg3) outset 2px;
-}
-
-/* Checkbox Input */
-pyro-checkbox {
-    padding: 5px;
-    border-radius: 5px;
-}
-
-pyro-checkbox::part(input) {
-    cursor: pointer;
-}
-
-pyro-checkbox::part(label) {
-    font-family: "Poppins", sans-serif;
-    font-size: 15px;
-    cursor: pointer;
-}
-
-/* Radio Input */
-
-/* Search Input */
-
-/* File Input */

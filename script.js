@@ -1,25 +1,38 @@
 import {LitElement, css, html} from "./lit-core.min.js";
 
-export class SimpleGreeting extends LitElement {
-  static properties = {
-    name: {},
-  };
-  // Define scoped styles right with your component, in plain CSS
-  static styles = css`
-    :host {
-      color: blue;
+class PyroButton extends LitElement {
+    static styles = css`
+        button {
+            font-family: inherit;
+            font-size: inherit;
+            cursor: pointer;
+        }
+        button:disabled {
+            cursor: not-allowed;
+        }
+        button[secondary] {
+            background-color: gray;
+        }
+    `;
+
+    static properties = {
+        disabled: { type: Boolean, reflect: true },
+        secondary: { type: Boolean, reflect: true },
+    };
+
+    constructor() {
+        super();
+        this.disabled = false;
+        this.secondary = this.getAttributeNames().includes("secondary");
     }
-  `;
 
-  constructor() {
-    super();
-    // Declare reactive properties
-    this.name = 'World';
-  }
-
-  // Render the UI as a function of component state
-  render() {
-    return html`<p>Hello, ${this.name}!</p>`;
-  }
+    render() {
+        return html`
+        <button ?disabled="${this.disabled}" ?secondary="${this.secondary}">
+            <slot></slot>
+        </button>
+        `;
+    }
 }
-customElements.define('simple-greeting', SimpleGreeting);
+
+customElements.define("pyro-button", PyroButton);
