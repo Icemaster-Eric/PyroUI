@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PyroUI</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js" type="module"></script>
+    <script src="script.js" async defer></script>
 </head>
 <body>
-    <simple-greeting>hi</simple-greeting>
     <pyro-nav>
         <pyro-navitem>
             PyroUI
@@ -47,8 +46,9 @@
         <pyro-checkbox name="checkbox one"></pyro-checkbox>
         <pyro-checkbox name="checkbox two" value="label">Label</pyro-checkbox>
         <pyro-radio name="radio-example" value="nolabel"></pyro-radio>
-        <pyro-radio name="radio-example">Radio</pyro-radio>
+        <pyro-radio name="radio-example" value="label">Radio</pyro-radio>
         <pyro-button data-submit>Submit</pyro-button>
     </pyro-form>
+    <form action="/submit" method="post"></form>
 </body>
 </html>
